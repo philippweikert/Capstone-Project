@@ -12,7 +12,7 @@ public class PlantController {
     private final PlantService plantService;
 
     @PostMapping
-    public Plant createPlant (@RequestBody Plant plant){
+    public Plant createNewPlant (@RequestBody Plant plant){
         return plantService.createPlant(plant);
     }
 }
