@@ -3,8 +3,8 @@ package de.neuefische.capstone;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class PlantService {
 
     private final PlantRepo plantRepo;
@@ -12,4 +12,5 @@ public class PlantService {
     public Plant createPlant (Plant plant){
         return plantRepo.save(plant);
     }
+
 }
