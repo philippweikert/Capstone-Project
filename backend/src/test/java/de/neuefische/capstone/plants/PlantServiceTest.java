@@ -1,5 +1,8 @@
-package de.neuefische.capstone;
+package de.neuefische.capstone.plants;
 
+import de.neuefische.capstone.plantcomponents.Plant;
+import de.neuefische.capstone.plantcomponents.PlantRepo;
+import de.neuefische.capstone.plantcomponents.PlantService;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
