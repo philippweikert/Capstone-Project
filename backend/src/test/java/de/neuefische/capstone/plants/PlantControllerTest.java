@@ -21,7 +21,7 @@ class PlantControllerTest {
     void integrationTest() {
         Plant plant1 = new Plant("0815", "Ficus elastica", "Gummibaum", "Schattig", "mäßig gießen", "ist vorhanden", "einmal im Jahr", "nicht notwendig");
 
-        ResponseEntity<Plant> response1 = restTemplate.postForEntity("/api/plants", plant1, Plant.class);
+        ResponseEntity<Plant> response1 = restTemplate.postForEntity("/api/plants/admin", plant1, Plant.class);
 
         assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.OK);
         Assertions.assertThat(response1.getBody()).isEqualTo(plant1);
