@@ -1,11 +1,9 @@
 package de.neuefische.capstone.user.create;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/plants/createuser")
@@ -21,8 +19,4 @@ public class UserController {
         return userService.createUser(appUser);
     }
 
-    @GetMapping("/{me}")
-    public ResponseEntity<AppUser> me (Principal principal){
-        return ResponseEntity.of(userService.findByUsername(principal.getName()));
-    }
 }
