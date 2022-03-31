@@ -1,4 +1,4 @@
-package de.neuefische.capstone;
+package de.neuefische.capstone.plantcomponents;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
