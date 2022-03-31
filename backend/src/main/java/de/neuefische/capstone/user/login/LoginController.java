@@ -28,7 +28,7 @@ public class LoginController {
     public String login (@RequestBody LoginUser loginUser){
         try{
             Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getUsedpassword())
+                    new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getUsedPassword())
             );
 
             List<String> roles = authentication.getAuthorities()

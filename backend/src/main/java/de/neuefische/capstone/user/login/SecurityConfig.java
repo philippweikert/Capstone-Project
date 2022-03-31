@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .mvcMatchers(HttpMethod.POST, "/api/plants/admin").permitAll()
-                .mvcMatchers(HttpMethod.POST, "/api/plants/create" , "/api/plants/login").permitAll()
+                .mvcMatchers(HttpMethod.POST, "/api/plants/createuser" , "/api/plants/login").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
