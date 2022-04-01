@@ -17,28 +17,32 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/plants/login")
+@RequestMapping("/api/users/login")
 @RequiredArgsConstructor
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
+    private List<String> getRoles(Authentication authentication) {
+        return authentication.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
+    }
+
     @PostMapping
-    public String login (@RequestBody LoginUser loginUser){
+    public Token login (@RequestBody Credentials loginUser){
         try{
             Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getUsedPassword())
-            );
-
-            List<String> roles = authentication.getAuthorities()
-                    .stream()
-                    .map(GrantedAuthority::getAuthority)
-                    .toList();
+                    new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getUsedPassword()));
 
             Map<String, Object> claims = new HashMap<>();
-            claims.put("roles", roles);
-            return jwtService.createToken(claims, loginUser.getUsername());
+            claims.put("roles", getRoles(authentication));
+            Token newToken = new Token();
+            newToken.setToken(jwtService.createToken(claims, loginUser.getUsername()));
+            return newToken;
+
         }catch (Exception exception) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid credentials");
         }

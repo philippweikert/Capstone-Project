@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .mvcMatchers(HttpMethod.POST, "/api/plants/admin").permitAll()
-                .mvcMatchers(HttpMethod.POST, "/api/plants/createuser" , "/api/plants/login").permitAll()
+                .mvcMatchers(HttpMethod.POST, "/api/users", "/api/users/login").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
@@ -62,8 +62,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder () {
-        return new BCryptPasswordEncoder();
-    }
 }
