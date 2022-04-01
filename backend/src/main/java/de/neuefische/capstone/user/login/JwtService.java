@@ -16,7 +16,7 @@ public class JwtService {
 
     private final String secret;
 
-    public JwtService(@Value("$(app.jwt.secret)") String secret){
+    public JwtService(@Value("${app.jwt.secret}") String secret){
         this.secret = secret;
     }
 

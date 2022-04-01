@@ -3,7 +3,7 @@ package de.neuefische.capstone.user.login;
 import lombok.Data;
 
 @Data
-public class LoginUser {
+public class Credentials {
 
     private String username;
     private String usedPassword;
