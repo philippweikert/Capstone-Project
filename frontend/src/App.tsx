@@ -1,4 +1,8 @@
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import AuthProvider from "./Authentification/AuthProvider";
 import PlantForm from "./PlantForm";
+import Registerpage from "./Landing/Registerpage";
+import Login from "./Landing/Login";
 
 
 function App() {
@@ -6,7 +10,12 @@ function App() {
 
     return (
         <div>
-            <PlantForm/>
+            <BrowserRouter>
+                <AuthProvider>
+                    <Login/>
+                    <Registerpage/>
+                </AuthProvider>
+            </BrowserRouter>
         </div>
     );
 }

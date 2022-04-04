@@ -1,21 +1,22 @@
 package de.neuefische.capstone.user.create;
 
-import de.neuefische.capstone.user.login.CreatedUserCredentials;
+import de.neuefische.capstone.user.login.CreateUserCredentials;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/users/createuser")
+@RequestMapping("/api/createuser")
 @RequiredArgsConstructor
-public class UserController {
+@CrossOrigin
+public class CreateUserController {
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping
-    public AppUser createUser (@RequestBody CreatedUserCredentials createCredentials) {
+    public AppUser createUser (@RequestBody CreateUserCredentials createCredentials) {
         if(!createCredentials.getPassword().equals(createCredentials.getRepeatPassword())){
             throw new IllegalArgumentException("Passwörter stimmen nicht überein");
         }

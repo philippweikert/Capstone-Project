@@ -1,6 +1,6 @@
 package de.neuefische.capstone.user.create;
 
-import de.neuefische.capstone.user.login.CreatedUserCredentials;
+import de.neuefische.capstone.user.login.CreateUserCredentials;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,14 @@ public class UserService {
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
 
-    public AppUser createUser (CreatedUserCredentials createdUserCredentials) {
-        if (findByUsername(createdUserCredentials.getUsername()).isPresent()){
+    public AppUser createUser (CreateUserCredentials createUserCredentials) {
+        if (findByUsername(createUserCredentials.getUsername()).isPresent()){
             throw new IllegalArgumentException("Du bist schon registriert");
         }
         AppUser newAppUser = new AppUser();
-        newAppUser.setUsername(createdUserCredentials.getUsername());
+        newAppUser.setUsername(createUserCredentials.getUsername());
         newAppUser.setRole("USER");
-        newAppUser.setPassword(passwordEncoder.encode(createdUserCredentials.getPassword()));
+        newAppUser.setPassword(passwordEncoder.encode(createUserCredentials.getPassword()));
         return userRepo.save(newAppUser);
     }
 

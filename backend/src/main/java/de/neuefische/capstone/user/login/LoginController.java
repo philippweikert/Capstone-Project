@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/users/login")
+@RequestMapping("/api/login")
 @RequiredArgsConstructor
 public class LoginController {
 
