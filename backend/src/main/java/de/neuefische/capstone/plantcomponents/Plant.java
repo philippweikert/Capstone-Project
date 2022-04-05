@@ -21,5 +21,6 @@ public class Plant {
     private String soil;
     private String manure;
     private String repot;
+    private String user;
 
 }

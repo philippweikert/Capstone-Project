@@ -8,11 +8,12 @@ import java.util.Optional;
 
 @Repository
 public interface PlantRepo extends MongoRepository<Plant, String> {
-    Optional<Plant> findByScientificName(String scientificName);
 
-    Optional<Plant> findByNonScName(String nonScientificName);
+    Optional<Plant> findByScientificName(String scientificName, String user);
 
-    Optional<Plant> findByLocation(String location);
+    Optional<Plant> findByNonScName(String nonScientificName, String user);
+
+    Optional<Plant> findByLocation(String location, String user);
 
     List<Plant> findAllByUser(String user);
 }

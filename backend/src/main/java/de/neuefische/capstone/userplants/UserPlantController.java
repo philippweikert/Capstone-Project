@@ -1,8 +1,8 @@
 package de.neuefische.capstone.userplants;
 
 import de.neuefische.capstone.plantcomponents.Plant;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -11,6 +11,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/api/plants")
 @RequiredArgsConstructor
+@AllArgsConstructor
 @CrossOrigin
 public class UserPlantController {
 
@@ -22,17 +23,18 @@ public class UserPlantController {
     }
 
     @GetMapping("/{scientificName}")
-    public ResponseEntity<Plant>getPlant(@PathVariable String scientificName){
-        return ResponseEntity.of(userPlantService.getPlant(scientificName));
+    public Plant getPlantByScName(@PathVariable String scientificName, Principal principal){
+        return userPlantService.getPlantByScName(scientificName, principal);
     }
 
     @GetMapping("/{nonScientificName}")
-    public ResponseEntity<Plant>getPlants(@PathVariable String nonScientificName){
-        return ResponseEntity.of(userPlantService.getPlants(nonScientificName));
+    public Plant getPlantByNonScName(@PathVariable String nonScientificName, Principal principal){
+        return userPlantService.getPlantByNonScName(nonScientificName, principal);
     }
 
     @GetMapping("/{location}")
-    public ResponseEntity<Plant>getMorePlants(@PathVariable String location){
-        return ResponseEntity.of(userPlantService.getMorePlants(location));
+    public Plant getPlantByLocation(@PathVariable String location, Principal principal){
+        return userPlantService.getPlantByLocation(location, principal);
     }
+
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,16 +14,16 @@ public class UserPlantService {
 
     private final PlantRepo plantRepo;
 
-    public Optional<Plant> getPlant(String scientificName) {
-        return plantRepo.findByScientificName(scientificName);
+    public Plant getPlantByScName(String scientificName, Principal principal) {
+        return plantRepo.findByScientificName(scientificName, principal.getName()).orElseThrow(() -> new IllegalArgumentException(scientificName +" ist nicht in der Datenbank!"));
     }
 
-    public Optional<Plant> getPlants(String nonScientificName) {
-        return plantRepo.findByNonScName(nonScientificName);
+    public Plant getPlantByNonScName(String nonScientificName, Principal principal) {
+        return plantRepo.findByNonScName(nonScientificName, principal.getName()).orElseThrow(() -> new IllegalArgumentException(nonScientificName +" ist nicht in der Datenbank!"));
     }
 
-    public Optional<Plant> getMorePlants(String location) {
-        return plantRepo.findByLocation(location);
+    public Plant getPlantByLocation(String location, Principal principal) {
+        return plantRepo.findByLocation(location, principal.getName()).orElseThrow(() -> new IllegalArgumentException("Eine Pflanze die " + location + "stehen muss, ist nicht in der Datenbank!"));
     }
 
     public List<Plant> getAllPlants(Principal principal) {

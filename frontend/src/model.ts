@@ -1,6 +1,6 @@
 export interface Plant {
 
-    id?: string ;
+    id?: string;
     scientificName: string;
     nonScName: string;
     location: string;
@@ -8,4 +8,5 @@ export interface Plant {
     soil: string;
     manure: string;
     repot: string ;
+    user?: string;
 }
