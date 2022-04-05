@@ -3,7 +3,7 @@ package de.neuefische.capstone.user;
 import de.neuefische.capstone.user.create.AppUser;
 import de.neuefische.capstone.user.create.UserRepo;
 import de.neuefische.capstone.user.create.UserService;
-import de.neuefische.capstone.user.login.CreatedUserCredentials;
+import de.neuefische.capstone.user.login.CreateUserCredentials;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,8 +20,8 @@ class UserServiceTest {
     @Test
     void shouldCreateNewUser() {
 
-        CreatedUserCredentials createdUserCredentials =
-                new CreatedUserCredentials("Hans Hansen", "passwort1", "passwort1");
+        CreateUserCredentials createUserCredentials =
+                new CreateUserCredentials("Hans Hansen", "passwort1", "passwort1");
 
         AppUser newAppUser = new AppUser();
         newAppUser.setUsername("Hans Hansen");
@@ -41,7 +41,7 @@ class UserServiceTest {
         when(passwordEncoder.encode("passwort1")).thenReturn("Hans1");
 
         UserService userService = new UserService(userRepo, passwordEncoder);
-        AppUser actual = userService.createUser(createdUserCredentials);
+        AppUser actual = userService.createUser(createUserCredentials);
 
         assertThat(actual).isSameAs(savedAppUser);
     }
