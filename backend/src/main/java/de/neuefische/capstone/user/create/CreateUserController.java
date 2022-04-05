@@ -2,7 +2,10 @@ package de.neuefische.capstone.user.create;
 
 import de.neuefische.capstone.user.login.CreateUserCredentials;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 
 @RestController
@@ -22,4 +25,8 @@ public class CreateUserController {
         return userService.createUser(createCredentials);
     }
 
+    @GetMapping("/{me}")
+    public ResponseEntity<AppUser> me (Principal principal){
+        return ResponseEntity.of(userService.findByUsername(principal.getName()));
+    }
 }
