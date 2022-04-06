@@ -10,7 +10,7 @@ export default function PlantForm(){
     const [soil, setSoil] = useState("");
     const [manure, setManure] = useState("");
     const [repot, setRepot] = useState("");
-    //const [errorMessage, setErrorMessage] = useState("");
+
 
     const createPlant = (event: FormEvent) => {
         event.preventDefault()
