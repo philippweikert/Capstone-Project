@@ -1,4 +1,4 @@
-import {FormEvent, useEffect, useState} from "react";
+import {FormEvent, useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {useAuth} from "../Authentification/AuthProvider";
 import {Plant} from "../model";
@@ -34,6 +34,7 @@ export default function AdminForm(){
                 }
             })
             .then(getAllPlants)
+
         setScientificName("")
         setNonScName("")
         setLocation("")
@@ -43,16 +44,16 @@ export default function AdminForm(){
         setRepot("")
 
     }
-        const getAllPlants = () => {
+        const getAllPlants = useCallback( () => {
            axios.get(`${process.env.REACT_APP_BASE_URL}/api/plants/admin`,
                {headers: {'Authorization':`Bearer${auth.token}`}})
                 .then(response => response.data)
                .then((plantsFromBackend: Array<Plant>) => setPlants(plantsFromBackend))
-        }
+        },[auth.token])
 
         useEffect(() => {
             getAllPlants()
-        },[])
+        },[getAllPlants])
 
 
 return(
