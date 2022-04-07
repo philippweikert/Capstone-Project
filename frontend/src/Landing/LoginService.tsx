@@ -1,14 +1,5 @@
 import axios from "axios";
-import {Plant} from "./model";
-import {Credentials, RegisterCredentials} from "./Interfaces";
-
-
-export const createNewPlant = (plant : Plant) => {
-      return axios.post(`${process.env.REACT_APP_BASE_URL}/api/plants/admin`,
-            plant)
-            .then(response => response.data)
-
-}
+import {Credentials, RegisterCredentials} from "../Interfaces";
 
 export const loginUser = ({username, password} : Credentials) =>{
     return axios.post(`${process.env.REACT_APP_BASE_URL}/api/login`,
@@ -21,6 +12,3 @@ export const registerUser = ({username, password, repeatPassword} :RegisterCrede
         {'username': username, 'password': password, 'repeatPassword':repeatPassword})
         .then(response => response.data)
 }
-
-
-

@@ -15,7 +15,7 @@ public class UserPlantService {
     private final PlantRepo plantRepo;
 
     public Plant getPlantByScName(String scientificName, Principal principal) {
-        return plantRepo.findByScientificName(scientificName, principal.getName()).orElseThrow(() -> new IllegalArgumentException(scientificName +" ist nicht in der Datenbank!"));
+        return plantRepo.findByScientificName(scientificName, principal.getName()).orElseThrow(() -> new IllegalStateException(scientificName + " ist nicht in der Datenbank"));
     }
 
     public Plant getPlantByNonScName(String nonScientificName, Principal principal) {
