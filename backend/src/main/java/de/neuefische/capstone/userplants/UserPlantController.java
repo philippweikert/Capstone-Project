@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/plants")
@@ -20,6 +21,11 @@ public class UserPlantController {
     @GetMapping
     public Collection<Plant> getAllPlants(Principal principal){
         return userPlantService.getAllPlants(principal);
+    }
+
+    @GetMapping("{/searchedPlant}")
+    public List<Plant> getMatchingPlants(@PathVariable String searchedPlant, Principal principal){
+        return userPlantService.getMatchingPlant(searchedPlant, principal);
     }
 
     @GetMapping("/{scientificName}")

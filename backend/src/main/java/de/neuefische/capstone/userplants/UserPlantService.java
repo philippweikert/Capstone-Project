@@ -29,4 +29,10 @@ public class UserPlantService {
     public List<Plant> getAllPlants(Principal principal) {
         return plantRepo.findAllByUser(principal.getName());
     }
+
+    public List<Plant> getMatchingPlant(String searchedPlant, Principal principal) {
+        return plantRepo.findAllByUser(principal.getName()).stream()
+                .filter(plant -> plant.getNonScName().toLowerCase().contains(searchedPlant.toLowerCase()))
+                .toList();
+    }
 }

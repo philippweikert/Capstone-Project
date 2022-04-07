@@ -69,6 +69,8 @@ return(
         </form>
         {error && <h3>{error}</h3>}
         <div>
+            <h3>Alle Pflanzen in der Datenbank</h3>
+            <button onClick={getAllPlants}>Hier alle Pflanzen abrufen</button>
             <ul>
             {plants.map(currentPlant => <li key={currentPlant.id}>{currentPlant.scientificName}+{currentPlant.nonScName}+{currentPlant.location}
                 +{currentPlant.pouring}+{currentPlant.soil}+{currentPlant.manure}+{currentPlant.repot}</li>)}
