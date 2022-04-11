@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class UserPlantServiceTest {
 
@@ -74,5 +74,18 @@ class UserPlantServiceTest {
         assertEquals(testPlant1, actual);
     }
 
+    @Test
+    void shouldFindCertainPlant(){
+
+        Plant testPlant1 = new Plant("1898", "Ficus elastica", "Gummibaum", "Schattig", "mäßig gießen", "ist vorhanden", "einmal im Jahr", "nicht notwendig", "Hans Hansen");
+        Plant testPlant2 = new Plant("0815", "Ficus elastica", "Gänseblümchen", "Schattig", "mäßig gießen", "ist vorhanden", "einmal im Jahr", "nicht notwendig", "Hans Hansen");
+        PlantRepo testRepo = Mockito.mock(PlantRepo.class);
+        UserPlantService userPlantService = new UserPlantService(testRepo);
+
+        when(testRepo.findAllByUser(testPrincipal.getName())).thenReturn(List.of(testPlant1, testPlant2));
+
+        assertEquals(List.of(testPlant1), userPlantService.getMatchingPlant("Gummibaum", testPrincipal));
+
+    }
 }
 

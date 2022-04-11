@@ -15,7 +15,7 @@ public class UserPlantService {
     private final PlantRepo plantRepo;
 
     public Plant getPlantByScName(String scientificName, Principal principal) {
-        return plantRepo.findByScientificName(scientificName, principal.getName()).orElseThrow(() -> new IllegalArgumentException(scientificName +" ist nicht in der Datenbank!"));
+        return plantRepo.findByScientificName(scientificName, principal.getName()).orElseThrow(() -> new IllegalStateException(scientificName + " ist nicht in der Datenbank"));
     }
 
     public Plant getPlantByNonScName(String nonScientificName, Principal principal) {
@@ -28,5 +28,11 @@ public class UserPlantService {
 
     public List<Plant> getAllPlants(Principal principal) {
         return plantRepo.findAllByUser(principal.getName());
+    }
+
+    public List<Plant> getMatchingPlant(String searchedPlant, Principal principal) {
+        return plantRepo.findAllByUser(principal.getName()).stream()
+                .filter(plant -> plant.getNonScName().toLowerCase().contains(searchedPlant.toLowerCase()))
+                .toList();
     }
 }

@@ -1,5 +1,5 @@
 import {FormEvent, useState} from "react";
-import {registerUser} from "../FrontendService";
+import {registerUser} from "../Landing/LoginService";
 
 export default function Registerpage(){
     const [registerUsername, setRegisterUsername] = useState('');

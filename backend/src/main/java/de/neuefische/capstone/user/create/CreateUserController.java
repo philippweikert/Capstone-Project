@@ -25,8 +25,4 @@ public class CreateUserController {
         return userService.createUser(createCredentials);
     }
 
-    @GetMapping("/{me}")
-    public ResponseEntity<AppUser> me (Principal principal){
-        return ResponseEntity.of(userService.findByUsername(principal.getName()));
-    }
 }
