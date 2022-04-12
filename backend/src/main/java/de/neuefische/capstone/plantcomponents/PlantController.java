@@ -31,7 +31,7 @@ public class PlantController {
         return ResponseEntity.of(plantService.getPlantByIdAndUser(id, principal.getName()));
     }
 
-    @GetMapping("{/searchedPlant}")
+    @GetMapping("/{searchedPlant}")
     public List<Plant> getMatchingPlants(@PathVariable String searchedPlant, Principal principal) {
         return plantService.getMatchingPlant(searchedPlant, principal.getName());
     }
