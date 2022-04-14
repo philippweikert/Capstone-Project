@@ -48,7 +48,7 @@ export default function AdminForm(){
            axios.get(`${process.env.REACT_APP_BASE_URL}/api/plants/admin`,
                {headers: {'Authorization':`Bearer${auth.token}`}})
                 .then(response => response.data)
-               .then((plantsFromBackend: Array<Plant>) => setPlants(plantsFromBackend))
+                .then((plantsFromBackend: Array<Plant>) => setPlants(plantsFromBackend))
         },[auth.token])
 
         useEffect(() => {
@@ -71,10 +71,8 @@ return(
         {error && <h3>{error}</h3>}
         <div>
             <h3>Alle Pflanzen in der Datenbank</h3>
-            <button onClick={getAllPlants}>Hier alle Pflanzen abrufen</button>
             <ul>
-            {plants.map(currentPlant => <li key={currentPlant.id}>{currentPlant.scientificName}+{currentPlant.nonScName}+{currentPlant.location}
-                +{currentPlant.pouring}+{currentPlant.soil}+{currentPlant.manure}+{currentPlant.repot}</li>)}
+            {plants.map(currentPlant => <li key={currentPlant.id}>{currentPlant.scientificName} | {currentPlant.nonScName} | {currentPlant.location} | {currentPlant.pouring} | {currentPlant.soil} | {currentPlant.manure} | {currentPlant.repot}</li>)}
             </ul>
         </div>
     </div>

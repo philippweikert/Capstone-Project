@@ -17,8 +17,8 @@ export default function AuthProvider({children}:{children:ReactNode}) {
     }, [token, nav])
 
 
-const login = (username:string, password:string) => {
-    return loginUser({username: username, password: password})
+const login = (username:string, usedPassword:string) => {
+    return loginUser({username: username, password: usedPassword})
         .then(data => setToken(data.token))
 }
 

@@ -3,7 +3,7 @@ import {Credentials, RegisterCredentials} from "../Interfaces";
 
 export const loginUser = ({username, password} : Credentials) =>{
     return axios.post(`${process.env.REACT_APP_BASE_URL}/api/login`,
-        {'username':username,'password': password})
+        {'username':username,'usedPassword': password})
         .then(response => response.data)
 }
 

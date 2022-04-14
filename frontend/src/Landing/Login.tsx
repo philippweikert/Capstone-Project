@@ -2,8 +2,8 @@ import {FormEvent, useState} from "react";
 import {useAuth} from "../Authentification/AuthProvider";
 
 export default function Login(){
-    const [loginUsername, setLoginUsername] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [usedPassword, setUsedPassword] = useState("");
     const [error, setError] = useState("");
 
     const auth = useAuth();
@@ -11,7 +11,7 @@ export default function Login(){
     const loginAction = (event: FormEvent) => {
         event.preventDefault()
         setError("")
-        auth.login(loginUsername, loginPassword)
+        auth.login(username, usedPassword)
             .catch(error => setError(error.message))
     }
 
@@ -19,8 +19,8 @@ export default function Login(){
         <div>
             <h3>Log dich ein!</h3>
             <form onSubmit={loginAction}>
-                <input type="text" placeholder={'Benutzername'} value={loginUsername} onChange={ev => setLoginUsername(ev.target.value)}/>
-                <input type={'password'} placeholder={'Benutzerpasswort'} value={loginPassword} onChange={ev => setLoginPassword(ev.target.value)}/>
+                <input type="text" placeholder={'Benutzername'} value={username} onChange={ev => setUsername(ev.target.value)}/>
+                <input type={'password'} placeholder={'Benutzerpasswort'} value={usedPassword} onChange={ev => setUsedPassword(ev.target.value)}/>
                 <button type={'submit'}>Los geht's!</button>
             </form>
             {error && <h2>{error}</h2>}
