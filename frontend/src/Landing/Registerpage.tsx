@@ -1,11 +1,14 @@
 import {FormEvent, useState} from "react";
 import {registerUser} from "../Landing/LoginService";
+import {useNavigate} from "react-router-dom";
 
 export default function Registerpage(){
     const [registerUsername, setRegisterUsername] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
     const [registerRepeatPassword, setRegisterRepeatPassword] = useState('');
     const [error, setError] = useState('');
+
+    const navigate = useNavigate()
 
     const handleRegister = (event:FormEvent) => {
         event.preventDefault()
@@ -14,11 +17,12 @@ export default function Registerpage(){
             setError('Passwörter stimmen nicht überein!')
         }else{
             registerUser({username:registerUsername, password:registerPassword, repeatPassword:registerRepeatPassword})
-                .then(()=> {
+                /*.then(()=> {
                     setRegisterUsername("")
                     setRegisterPassword("")
                     setRegisterRepeatPassword("")
-                })
+                })*/
+                .then(() => navigate("/login"))
                 .catch(er => setError(er.message))
         }
     }

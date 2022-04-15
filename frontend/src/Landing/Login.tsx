@@ -1,5 +1,6 @@
 import {FormEvent, useState} from "react";
 import {useAuth} from "../Authentification/AuthProvider";
+import {useNavigate} from "react-router-dom";
 
 export default function Login(){
     const [username, setUsername] = useState("");
@@ -7,11 +8,13 @@ export default function Login(){
     const [error, setError] = useState("");
 
     const auth = useAuth();
+    const navigation = useNavigate()
 
     const loginAction = (event: FormEvent) => {
         event.preventDefault()
         setError("")
         auth.login(username, usedPassword)
+            .then(() => navigation("/home"))
             .catch(error => setError(error.message))
     }
 
