@@ -5,8 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import AuthProvider from "./Authentification/AuthProvider";
 import MainPage from "./UserSurface/MainPage";
-import Login from "./Components/Login";
-import Registerpage from "./Components/Registerpage";
+import RegisterPage from "./UserSurface/RegisterPage";
+import LoginPage from "./UserSurface/LoginPage";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -15,8 +15,8 @@ ReactDOM.render(
                <Routes>
                    <Route path={'/'} element={<App/>}>
                        <Route path={'/home'} element={<MainPage/>}/>
-                       <Route path={'/login'} element={<Login/>}/>
-                       <Route path={'/register'} element={<Registerpage/>}/>
+                       <Route path={'/login'} element={<LoginPage/>}/>
+                       <Route path={'/register'} element={<RegisterPage/>}/>
                    </Route>
                </Routes>
             </AuthProvider>

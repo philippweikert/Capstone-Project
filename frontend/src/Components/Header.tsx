@@ -16,7 +16,6 @@ export default function Header (){
             <div><button onClick={() => pathRoute('login')}>Zum Login</button></div>
             <div><button onClick={() => pathRoute('register')}>Registriere dich hier</button></div>
             <div><button onClick={() => auth.logout()}>Logout</button></div>
-            <div><button onClick={() => pathRoute('home')}>Zu deinen Pflanzen</button></div>
         </div>
     )
 }

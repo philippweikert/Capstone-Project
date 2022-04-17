@@ -17,11 +17,11 @@ export default function Registerpage(){
             setError('Passwörter stimmen nicht überein!')
         }else{
             registerUser({username:registerUsername, password:registerPassword, repeatPassword:registerRepeatPassword})
-                /*.then(()=> {
+                .then(()=> {
                     setRegisterUsername("")
                     setRegisterPassword("")
                     setRegisterRepeatPassword("")
-                })*/
+                })
                 .then(() => navigate("/login"))
                 .catch(er => setError(er.message))
         }
