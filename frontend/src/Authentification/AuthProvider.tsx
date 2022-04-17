@@ -1,5 +1,5 @@
 import {ReactNode, useContext, useEffect, useState} from "react";
-import {loginUser} from "../Landing/LoginService"
+import {loginUser} from "../service/FrontendService"
 import AuthContext from "./AuthContext";
 import {useNavigate} from "react-router-dom";
 

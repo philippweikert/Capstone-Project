@@ -1,5 +1,5 @@
 import {FormEvent, useState} from "react";
-import {registerUser} from "../Landing/LoginService";
+import {registerUser} from "../service/FrontendService";
 import {useNavigate} from "react-router-dom";
 
 export default function Registerpage(){
