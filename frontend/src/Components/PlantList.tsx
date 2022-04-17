@@ -52,6 +52,7 @@ export default function PlantList(){
                             <p>Umtopfen: {plants.repot}</p>
                         </div>)}
                 </h4>
+                    {error && <h3>{error}</h3>}
                 </ul>
             </div>
         </div>
