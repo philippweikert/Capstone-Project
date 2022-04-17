@@ -11,21 +11,20 @@ export default function PlantList(){
 
     const auth = useAuth()
 
-    const fetchAll = () => {
-        return getAllPlants(auth.token)
-            .then(response => {
-                if (response.status === 200) {
-                    return response.data
-                }
-                throw new Error("Getting your List went wrong!")
-            })
-            .then((plantsFromBackend: Array<Plant>) => setPlants(plantsFromBackend))
-            .catch((event : Error) => setErrorMessage(event.message))
-    }
-
     useEffect(() => {
+        const fetchAll = () => {
+            return getAllPlants(auth.token)
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.data
+                    }
+                    throw new Error("Getting your List went wrong!")
+                })
+                .then((plantsFromBackend: Array<Plant>) => setPlants(plantsFromBackend))
+                .catch((event: Error) => setErrorMessage(event.message))
+        }
         fetchAll()
-    }, [])
+    },[auth.token])
 
     useEffect(() => {
         setTimeout(() => {
