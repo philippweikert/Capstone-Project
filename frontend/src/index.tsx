@@ -14,9 +14,10 @@ ReactDOM.render(
             <AuthProvider>
                <Routes>
                    <Route path={'/'} element={<App/>}>
-                       <Route path={'/home'} element={<MainPage/>}/>
-                       <Route path={'/login'} element={<LoginPage/>}/>
-                       <Route path={'/register'} element={<RegisterPage/>}/>
+                       <Route index element={<MainPage/>}/>
+                       <Route path={'login'} element={<LoginPage/>}/>
+                       <Route path={'register'} element={<RegisterPage/>}/>
+                       <Route path={'*'} element={<App/>}/>
                    </Route>
                </Routes>
             </AuthProvider>

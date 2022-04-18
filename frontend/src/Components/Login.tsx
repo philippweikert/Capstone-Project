@@ -10,11 +10,11 @@ export default function Login(){
     const auth = useAuth();
     const navigation = useNavigate()
 
-    const loginAction = (event: FormEvent) => {
+    const loginAction = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         setError("")
         auth.login(username, usedPassword)
-            .then(() => navigation("/home"))
+            .then(() => navigation("home"))
             .catch(error => setError(error.message))
     }
 
