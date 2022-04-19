@@ -29,7 +29,7 @@ export const getAllPlants = (token: string) => {
 }
 
 export const changePlants = (plant: Plant, token: string) => {
-    return fetch(`/api/plants/admin/${plant.id}`, {
+    return fetch(`${process.env.REACT_APP_BASE_URL}/api/plants/admin/${plant.id}`, {
         method: 'PUT',
     headers: {
         'Authorization' : `Bearer ${token}`,

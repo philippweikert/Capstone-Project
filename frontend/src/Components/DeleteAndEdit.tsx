@@ -48,7 +48,7 @@ export default function DeleteAndEdit(props: DeleteAndEditProps) {
     }
 
     const deletePlant = () => {
-        fetch(`${process.env.REACT_APP_BASE}/api/plants/admin/${props.plantItem.id}`,{
+        fetch(`${process.env.REACT_APP_BASE_URL}/api/plants/admin/${props.plantItem.id}`,{
             method: 'Delete',
             headers: {
                 'Authorization' : `Bearer ${auth.token}`,
@@ -87,13 +87,13 @@ export default function DeleteAndEdit(props: DeleteAndEditProps) {
                     </div>
                     :
                     <div>
-                        <p>{scNameToEdit}</p> {/*auf <p> ändern*/}
-                        <p>{nonScNameToEdit}</p>
-                        <p>{locationToEdit}</p>
-                        <p>{pouringToEdit}</p>
-                        <p>{soilToEdit}</p>
-                        <p>{manureToEdit}</p>
-                        <p>{repotToEdit}</p>
+                        <p>Wissenschaftl. Name: {scNameToEdit}</p> {/*auf <p> ändern*/}
+                        <p>Name: {nonScNameToEdit}</p>
+                        <p>Wo hinstellen: {locationToEdit}</p>
+                        <p>Wasserbedarf: {pouringToEdit}</p>
+                        <p>Bevorzugte Erde: {soilToEdit}</p>
+                        <p>Düngen: {manureToEdit}</p>
+                        <p>Umtopfen: {repotToEdit}</p>
                         <div>{error}</div>
                     </div>
             }
