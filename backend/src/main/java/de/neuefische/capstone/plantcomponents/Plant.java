@@ -23,7 +23,16 @@ public class Plant {
     private String repot;
     private String user;
 
-
+    public Plant updatePlant(Plant changedPlant) {
+        setScientificName(changedPlant.getScientificName());
+        setNonScName(changedPlant.getNonScName());
+        setLocation(changedPlant.getLocation());
+        setPouring(changedPlant.getPouring());
+        setSoil(changedPlant.getSoil());
+        setManure(changedPlant.getManure());
+        setRepot(changedPlant.getRepot());
+        return this;
+    }
 }
 
 

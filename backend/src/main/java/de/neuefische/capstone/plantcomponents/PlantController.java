@@ -42,8 +42,9 @@ public class PlantController {
     }
 
     @PutMapping("/{id}")
-    public Plant changePlant (@RequestBody Plant changedPlant){
-        return plantService.changePlant(changedPlant);
+    public Collection<Plant> changePlant (@PathVariable String id, @RequestBody Plant changedPlant, Principal principal){
+        plantService.changePlant(id, changedPlant);
+        return plantService.getAllPlantsByUser(principal.getName());
     }
 
 }
