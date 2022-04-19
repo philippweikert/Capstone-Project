@@ -1,11 +1,14 @@
 import {FormEvent, useState} from "react";
-import {registerUser} from "../Landing/LoginService";
+import {registerUser} from "../service/FrontendService";
+import {useNavigate} from "react-router-dom";
 
 export default function Registerpage(){
     const [registerUsername, setRegisterUsername] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
     const [registerRepeatPassword, setRegisterRepeatPassword] = useState('');
     const [error, setError] = useState('');
+
+    const navigate = useNavigate()
 
     const handleRegister = (event:FormEvent) => {
         event.preventDefault()
@@ -19,6 +22,7 @@ export default function Registerpage(){
                     setRegisterPassword("")
                     setRegisterRepeatPassword("")
                 })
+                .then(() => navigate("login"))
                 .catch(er => setError(er.message))
         }
     }

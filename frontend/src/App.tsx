@@ -1,8 +1,7 @@
-import {BrowserRouter} from "react-router-dom";
-import AuthProvider from "./Authentification/AuthProvider";
-import Registerpage from "./Landing/Registerpage";
-import Login from "./Landing/Login";
-import AdminForm from "./UserSurface/AdminForm";
+
+import {Outlet} from "react-router-dom";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 
 
 function App() {
@@ -10,13 +9,9 @@ function App() {
 
     return (
         <div>
-            <BrowserRouter>
-                <AuthProvider>
-                    <Login/>
-                    <Registerpage/>
-                    <AdminForm/>
-                </AuthProvider>
-            </BrowserRouter>
+            <Header/>
+            <Outlet/>
+            <Footer/>
         </div>
     );
 }
