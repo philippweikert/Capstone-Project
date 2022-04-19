@@ -23,4 +23,7 @@ public class Plant {
     private String repot;
     private String user;
 
+
 }
+
+

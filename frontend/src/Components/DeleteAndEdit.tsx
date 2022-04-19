@@ -6,11 +6,10 @@ import {changePlants} from "../service/FrontendService";
 interface DeleteAndEditProps {
 
     plantItem: Plant
-    onPlantDeletion: () => void
-    onPlantChange: (plantItem: Array<Plant>) => void
+    onPlantChange: () => void
 }
 
-export default function DeletAndEdit(props: DeleteAndEditProps) {
+export default function DeleteAndEdit(props: DeleteAndEditProps) {
 
     const [scNameToEdit, setScNameToEdit] = useState(props.plantItem.scientificName);
     const [nonScNameToEdit, setNonScNameToEdit] = useState(props.plantItem.nonScName);
@@ -41,8 +40,8 @@ export default function DeletAndEdit(props: DeleteAndEditProps) {
                 }
                 throw new Error("Edit went wrong!")
             })
-            .then((plantsFromBackend: Array<Plant>) => {
-            props.onPlantChange(plantsFromBackend)
+            .then(() => {
+            props.onPlantChange()
             setEditMode(false)
         })
         .catch((event: Error) => setErrorMessage(event.message))
@@ -61,7 +60,7 @@ export default function DeletAndEdit(props: DeleteAndEditProps) {
                     throw new Error("Delete did not work!")
                 }
             })
-             .then(() => props.onPlantDeletion())
+             .then(() => props.onPlantChange())
             .catch((event : Error) => setErrorMessage(event.message))
 
     }
@@ -88,10 +87,20 @@ export default function DeletAndEdit(props: DeleteAndEditProps) {
                     </div>
                     :
                     <div>
-                    <button onClick={() => setEditMode(true)}>Editieren</button>
-                    <button onClick={deletePlant}>Pflanze löschen</button>
+                        <p>{scNameToEdit}</p> {/*auf <p> ändern*/}
+                        <p>{nonScNameToEdit}</p>
+                        <p>{locationToEdit}</p>
+                        <p>{pouringToEdit}</p>
+                        <p>{soilToEdit}</p>
+                        <p>{manureToEdit}</p>
+                        <p>{repotToEdit}</p>
+                        <div>{error}</div>
                     </div>
             }
+            <div>
+                <button onClick={() => setEditMode(true)}>Editieren</button>
+                <button onClick={deletePlant}>Pflanze löschen</button>
+            </div>
         </div>
 
     )

@@ -24,12 +24,12 @@ export const searchPlant = (input: string, token: string) => {
 
 export const getAllPlants = (token: string) => {
     return axios.get(`${process.env.REACT_APP_BASE_URL}/api/plants/admin`,
-        {headers: {'Authorization':`Bearer${token}`}})
+        {headers: {'Authorization':`Bearer ${token}`}})
         .then(response => response.data)
 }
 
 export const changePlants = (plant: Plant, token: string) => {
-    return fetch(`/api/plants/admin/`, {
+    return fetch(`/api/plants/admin/${plant.id}`, {
         method: 'PUT',
     headers: {
         'Authorization' : `Bearer ${token}`,

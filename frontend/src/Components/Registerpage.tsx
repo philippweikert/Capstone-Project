@@ -22,7 +22,7 @@ export default function Registerpage(){
                     setRegisterPassword("")
                     setRegisterRepeatPassword("")
                 })
-                .then(() => navigate("/login"))
+                .then(() => navigate("login"))
                 .catch(er => setError(er.message))
         }
     }

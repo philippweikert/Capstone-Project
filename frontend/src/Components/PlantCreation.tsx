@@ -3,6 +3,7 @@ import axios from "axios";
 import {useAuth} from "../Authentification/AuthProvider";
 import {Plant} from "../model";
 
+
 interface PlantCreationProps {
     onPlantCreation: (plantItems : Array<Plant>) => void
 }
@@ -43,7 +44,7 @@ const createNewPlant = (event: FormEvent) => {
             setRepot("")
             props.onPlantCreation(plantsFromBackend)
         })
-        .catch()
+
 
 }
 

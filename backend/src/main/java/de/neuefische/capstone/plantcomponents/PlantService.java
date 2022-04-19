@@ -38,11 +38,12 @@ public class PlantService {
         return plantRepo.findByIdAndUser(id, username);
     }
 
-    public Plant changePlant (Plant changedPlant){
-        if(plantRepo.findById(changedPlant.getId()).isPresent()){
+    public Plant changePlant(Plant changedPlant) {
+        if (plantRepo.findById(changedPlant.getId()).isPresent()){
             plantRepo.save(changedPlant);
         }
         return changedPlant;
     }
+    }
 
-}
+
