@@ -15,11 +15,9 @@ export default function PlantList(){
 
     const getPlantsToList = useCallback(() => {
         return getAllPlants(auth.token)
-
                 .then((plantsFromBackend: Array<Plant>) => {setPlants(plantsFromBackend)
-                    console.log(plantsFromBackend)})
-
-        },[auth.token])
+                    console.log(plantsFromBackend)}
+                )},[auth.token])
 
     useEffect(() => {
         getPlantsToList()
