@@ -31,7 +31,7 @@ export default function Registerpage(){
 
     return(
     <div>
-        <h3>Registriere dich hier!</h3>
+        <h3 className="ml-2">Registriere dich hier!</h3>
         <form onSubmit={handleRegister}>
             <LrInput placeholder={'Benutzername'} value={registerUsername} onChange={setRegisterUsername} type='text' additionalCss="mr-4 ml-3"/>
             <LrInput placeholder={'Passwort'} value={registerPassword} onChange={setRegisterPassword} type='password' additionalCss="mr-4"/>

@@ -22,8 +22,7 @@ export default function Login(){
 
     return(
         <div>
-            <h3>Hallo lieber Besucher, hier kannst du dich einloggen und/oder registrieren!</h3>
-            <h4>Die App soll dir dabei helfen, deinen Pflanzen ein schönes Leben zu bieten.</h4>
+            <h3 className="ml-2">Log dich hier ein!</h3>
             <form onSubmit={loginAction}>
                 <LrInput placeholder={'Benutzername'} value={username} onChange={setUsername} type='text' additionalCss="mr-4 ml-3"/>
                 <LrInput placeholder={'Passwort'} value={usedPassword} onChange={setUsedPassword} type='password' additionalCss="mr-4"/>
