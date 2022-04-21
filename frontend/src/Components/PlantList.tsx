@@ -15,8 +15,7 @@ export default function PlantList(){
 
     const getPlantsToList = useCallback(() => {
         return getAllPlants(auth.token)
-                .then((plantsFromBackend: Array<Plant>) => {setPlants(plantsFromBackend)
-                    console.log(plantsFromBackend)}
+                .then((plantsFromBackend: Array<Plant>) => setPlants(plantsFromBackend)
                 )},[auth.token])
 
     useEffect(() => {
@@ -38,11 +37,11 @@ export default function PlantList(){
             </div>
             <div>
                 <ul>
-                <h4>
+                <div>
                     {plants &&
                         plants.map(plant => <DeleteAndEdit plantItem={plant} onPlantChange={getPlantsToList}/> )
                         }
-                </h4>
+                </div>
                     {error && <h3>{error}</h3>}
                 </ul>
             </div>

@@ -7,6 +7,7 @@ export default function Header (){
 
     return(
         <div>
+            <h3>Hallo {auth.username}, herzlich willkommen!</h3>
             <div><button onClick={() => auth.logout()}>Logout</button></div>
         </div>
     )
