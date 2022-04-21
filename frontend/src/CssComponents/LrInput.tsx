@@ -2,7 +2,6 @@ interface LrInputProps {
     value: string
     placeholder: string
     onChange: (value: string) => void
-    onKeyUp?: (ev: KeyboardEvent) => void
     type?: string
     additionalCss?: string
 }
