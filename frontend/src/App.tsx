@@ -1,19 +1,23 @@
 
 import {Outlet} from "react-router-dom";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
+import hintergrund from "./image/hintergrund.jpg"
+import {Component} from "react";
 
+class App extends Component {
+    render() {
+        const background = {
+            backgroundImage: `url(${hintergrund})`,
+            height: '100vh',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'
+        }
 
-function App() {
-
-
-    return (
-        <div>
-            <Header/>
-            <Outlet/>
-            <Footer/>
-        </div>
-    );
+        return (
+            <div style={background}>
+                <Outlet/>
+            </div>
+        );
+    }
 }
 
 export default App;

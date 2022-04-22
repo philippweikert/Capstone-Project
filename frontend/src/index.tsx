@@ -7,6 +7,7 @@ import AuthProvider from "./Authentification/AuthProvider";
 import MainPage from "./UserSurface/MainPage";
 import RegisterPage from "./UserSurface/RegisterPage";
 import LoginPage from "./UserSurface/LoginPage";
+import "./index.css"
 
 ReactDOM.render(
     <React.StrictMode>

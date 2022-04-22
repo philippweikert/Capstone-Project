@@ -2,6 +2,8 @@ import {FormEvent, useState} from "react";
 import axios from "axios";
 import {useAuth} from "../Authentification/AuthProvider";
 import {Plant} from "../model";
+import PlantInput from "../CssComponents/PlantInput";
+import Button from "../CssComponents/Button";
 
 
 interface PlantCreationProps {
@@ -51,14 +53,14 @@ const createNewPlant = (event: FormEvent) => {
 return(
     <div>
         <form onSubmit={event => createNewPlant(event)}>
-            <input type="text" placeholder={'Wissenschaftl. Name'} value={scName} onChange={event => setScName(event.target.value)}/>
-            <input type="text" placeholder={'Name'} value={nonScName} onChange={event => setNonScName(event.target.value)}/>
-            <input type="text" placeholder={'Wo hinstellen?'} value={location} onChange={event => setLocation(event.target.value)}/>
-            <input type="text" placeholder={'Wasserbedarf'} value={pouring} onChange={event => setPouring(event.target.value)}/>
-            <input type="text" placeholder={'Bevorzugter Boden'} value={soil} onChange={event => setSoil(event.target.value)}/>
-            <input type="text" placeholder={'Düngen'} value={manure} onChange={event => setManure(event.target.value)}/>
-            <input type="text" placeholder={'Umtopfen'} value={repot} onChange={event => setRepot(event.target.value)}/>
-            <input type="submit" value={'Anlegen'}/>
+            <PlantInput placeholder={'wissenschaftl. Name'} value={scName} onChange={setScName} type='text' additionalCss="mr-2 ml-3"/>
+            <PlantInput placeholder={'Name'} value={nonScName} onChange={setNonScName} type='text' additionalCss="mr-2"/>
+            <PlantInput placeholder={'Wo hinstellen?'} value={location} onChange={setLocation} type='text' additionalCss="mr-2"/>
+            <PlantInput placeholder={'Wasserbedarf'} value={pouring} onChange={setPouring} type='text' additionalCss="mr-2"/>
+            <PlantInput placeholder={'Bevorzugter Boden'} value={soil} onChange={setSoil} type='text' additionalCss="mr-2"/>
+            <PlantInput placeholder={'Düngen'} value={manure} onChange={setManure} type='text' additionalCss="mr-2"/>
+            <PlantInput placeholder={'Umtopfen'} value={repot} onChange={setRepot} type='text' additionalCss="mr-2"/>
+            <Button label='Anlegen' onClick={() => createNewPlant}/>
         </form>
         {error && <h3>{error}</h3>}
     </div>

@@ -1,6 +1,8 @@
 import {FormEvent, useState} from "react";
 import {registerUser} from "../service/FrontendService";
 import {useNavigate} from "react-router-dom";
+import Button from "../CssComponents/Button";
+import LrInput from "../CssComponents/LrInput";
 
 export default function Registerpage(){
     const [registerUsername, setRegisterUsername] = useState('');
@@ -29,12 +31,14 @@ export default function Registerpage(){
 
     return(
     <div>
-        <h3>Registriere dich hier!</h3>
+        <h3 className="ml-2 text-slate-500">Registriere dich hier!</h3>
         <form onSubmit={handleRegister}>
-            <input type={'text'} placeholder={'Benutzername'} value={registerUsername} onChange={event => setRegisterUsername(event.target.value)}/>
-            <input type={'password'} placeholder={'Benutzerpasswort'} value={registerPassword} onChange={event => setRegisterPassword(event.target.value)}/>
-            <input type={'password'} placeholder={'Benutzerpasswort wiederholen'} value={registerRepeatPassword} onChange={event => setRegisterRepeatPassword(event.target.value)}/>
-            <button type={'submit'}>Registrieren</button>
+            <LrInput placeholder={'Benutzername'} value={registerUsername} onChange={setRegisterUsername} type='text' additionalCss="mr-4 ml-3"/>
+            <LrInput placeholder={'Passwort'} value={registerPassword} onChange={setRegisterPassword} type='password' additionalCss="mr-4"/>
+            <LrInput placeholder={'Wiederholung Passwort'} value={registerRepeatPassword} onChange={setRegisterRepeatPassword} type='password' additionalCss="mr-4"/>
+            <div>
+                <Button label='Registriere dich hier' onClick={() => handleRegister}/>
+            </div>
         </form>
         {error && <h2>{error}</h2>}
     </div>)

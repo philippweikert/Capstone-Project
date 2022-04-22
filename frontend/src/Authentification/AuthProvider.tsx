@@ -6,10 +6,13 @@ import {useNavigate} from "react-router-dom";
 export default function AuthProvider({children}:{children:ReactNode}) {
 
     const [token, setToken] = useState('');
+    const [username, setUsername] = useState("")
     const nav = useNavigate()
 
     useEffect(() => {
         if(token){
+            const tokenDetail = JSON.parse(window.atob(token.split('.')[1]))
+            setUsername(tokenDetail.sub)
             nav("/")
         }else {
             nav("/login")
@@ -26,7 +29,7 @@ const logout = () => {
   setToken('')
 }
 
-return <AuthContext.Provider value={{token, login, logout}}>{children}</AuthContext.Provider>
+return <AuthContext.Provider value={{token, username, login, logout}}>{children}</AuthContext.Provider>
 
 }
 

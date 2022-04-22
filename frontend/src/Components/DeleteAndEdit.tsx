@@ -2,6 +2,9 @@ import {useEffect, useState} from "react";
 import {Plant} from "../model";
 import {useAuth} from "../Authentification/AuthProvider";
 import {changePlants} from "../service/FrontendService";
+import DeleteButton from "../CssComponents/DeleteButton";
+import EditButton from "../CssComponents/EditButton";
+import EditorInput from "../CssComponents/EditorInput";
 
 interface DeleteAndEditProps {
 
@@ -70,37 +73,41 @@ export default function DeleteAndEdit(props: DeleteAndEditProps) {
     })
 
     return(
-        <div>
+        <div className="w-80">
             {
                 editMode
                 ?
                     <div>
-                        <input type={'text'} value={scNameToEdit} onChange={event => setScNameToEdit(event.target.value)}/>
-                        <input type={'text'} value={nonScNameToEdit} onChange={event => setNonScNameToEdit(event.target.value)}/>
-                        <input type={'text'} value={locationToEdit} onChange={event =>setLocationToEdit(event.target.value)}/>
-                        <input type={'text'} value={pouringToEdit} onChange={event => setPouringToEdit(event.target.value)}/>
-                        <input type={'text'} value={soilToEdit} onChange={event => setSoilToEdit(event.target.value)}/>
-                        <input type={'text'} value={manureToEdit} onChange={event => setManureToEdit(event.target.value)}/>
-                        <input type={'text'} value={repotToEdit} onChange={event => setRepotToEdit(event.target.value)}/>
-                        <button onClick={editPlant}>Änderungen speichern</button>
+                        <EditorInput value={scNameToEdit} onChange={setScNameToEdit} type={'text'} additionalCss="ml-2"/>
+                        <EditorInput value={nonScNameToEdit} onChange={setNonScNameToEdit} type={'text'} additionalCss="ml-2"/>
+                        <EditorInput value={locationToEdit} onChange={setLocationToEdit} type={'text'} additionalCss="ml-2"/>
+                        <EditorInput value={pouringToEdit} onChange={setPouringToEdit} type={'text'} additionalCss={'ml-2'}/>
+                        <EditorInput value={soilToEdit} onChange={setSoilToEdit} type={'text'} additionalCss={'ml-2'}/>
+                        <EditorInput value={manureToEdit} onChange={setManureToEdit} type={'text'} additionalCss={'ml-2'}/>
+                        <EditorInput value={repotToEdit} onChange={setRepotToEdit} type={'text'} additionalCss={'ml-2'}/>
+                        <EditButton label="Änderungen speichern" onClick={editPlant}/>
                         <div>{error}</div>
                     </div>
                     :
-                    <div>
-                        <p>Wissenschaftl. Name: {scNameToEdit}</p> {/*auf <p> ändern*/}
-                        <p>Name: {nonScNameToEdit}</p>
-                        <p>Wo hinstellen: {locationToEdit}</p>
-                        <p>Wasserbedarf: {pouringToEdit}</p>
-                        <p>Bevorzugte Erde: {soilToEdit}</p>
-                        <p>Düngen: {manureToEdit}</p>
-                        <p>Umtopfen: {repotToEdit}</p>
-                        <div>{error}</div>
+                    <div className="border-solid bg-gray-200 p-1 flex flex-col h-full justify-between" >
+                        <div>
+                        <p className="text-green-900">Wissenschaftl. Name: {scNameToEdit}</p>
+                        <p className="text-green-900">Name: {nonScNameToEdit}</p>
+                        <p className="text-green-900">Wo hinstellen: {locationToEdit}</p>
+                        <p className="text-green-900">Wasserbedarf: {pouringToEdit}</p>
+                        <p className="text-green-900">Bevorzugte Erde: {soilToEdit}</p>
+                        <p className="text-green-900">Düngen: {manureToEdit}</p>
+                        <p className="text-green-900">Umtopfen: {repotToEdit}</p>
+                        </div>
+                        <div className="flex gap-1">
+                        <EditButton label="Editieren" onClick={()=>setEditMode(true)}/>
+                        <DeleteButton label='Pflanze löschen' onClick={() => deletePlant()}/>
                     </div>
+                        {error && <div>{error}</div>}
+                    </div>
+
             }
-            <div>
-                <button onClick={() => setEditMode(true)}>Editieren</button>
-                <button onClick={deletePlant}>Pflanze löschen</button>
-            </div>
+
         </div>
 
     )
