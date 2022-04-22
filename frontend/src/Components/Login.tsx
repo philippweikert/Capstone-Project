@@ -22,7 +22,7 @@ export default function Login(){
 
     return(
         <div>
-            <h3 className="ml-2">Log dich hier ein!</h3>
+            <h3 className="ml-2 text-slate-500">Log dich hier ein!</h3>
             <form onSubmit={loginAction}>
                 <LrInput placeholder={'Benutzername'} value={username} onChange={setUsername} type='text' additionalCss="mr-4 ml-3"/>
                 <LrInput placeholder={'Passwort'} value={usedPassword} onChange={setUsedPassword} type='password' additionalCss="mr-4"/>

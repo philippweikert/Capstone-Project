@@ -73,7 +73,7 @@ export default function DeleteAndEdit(props: DeleteAndEditProps) {
     })
 
     return(
-        <div>
+        <div className="w-80">
             {
                 editMode
                 ?
@@ -89,7 +89,8 @@ export default function DeleteAndEdit(props: DeleteAndEditProps) {
                         <div>{error}</div>
                     </div>
                     :
-                    <div className="border-solid bg-gray-200 my-2 ml-2 w-80" >
+                    <div className="border-solid bg-gray-200 p-1 flex flex-col h-full justify-between" >
+                        <div>
                         <p className="text-green-900">Wissenschaftl. Name: {scNameToEdit}</p>
                         <p className="text-green-900">Name: {nonScNameToEdit}</p>
                         <p className="text-green-900">Wo hinstellen: {locationToEdit}</p>
@@ -97,9 +98,12 @@ export default function DeleteAndEdit(props: DeleteAndEditProps) {
                         <p className="text-green-900">Bevorzugte Erde: {soilToEdit}</p>
                         <p className="text-green-900">Düngen: {manureToEdit}</p>
                         <p className="text-green-900">Umtopfen: {repotToEdit}</p>
+                        </div>
+                        <div className="flex gap-1">
                         <EditButton label="Editieren" onClick={()=>setEditMode(true)}/>
-                        <DeleteButton label='Pflanze löschen' onClick={() => deletePlant}/>
-                        <div>{error}</div>
+                        <DeleteButton label='Pflanze löschen' onClick={() => deletePlant()}/>
+                    </div>
+                        {error && <div>{error}</div>}
                     </div>
 
             }

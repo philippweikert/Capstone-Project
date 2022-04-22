@@ -16,7 +16,6 @@ class App extends Component {
         return (
             <div style={background}>
                 <Outlet/>
-                <Footer/>
             </div>
         );
     }

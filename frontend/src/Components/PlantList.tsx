@@ -37,7 +37,7 @@ export default function PlantList(){
             </div>
             <div>
                 <ul>
-                <div>
+                <div className="flex flex-wrap items-stretch justify-left gap-1.5 ml-2">
                     {plants &&
                         plants.map(plant => <DeleteAndEdit plantItem={plant} onPlantChange={getPlantsToList}/> )
                         }
